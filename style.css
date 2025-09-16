@@ -17,9 +17,9 @@ h2 {
 .card-container {
     perspective: 1000px;
     margin: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 40px;
 }
 
@@ -405,5 +405,41 @@ h2 {
 .selected-card#Explorer-card .card-back {
     background: linear-gradient(135deg, #ff8a80, #ffb74d);
     transform: rotateY(180deg);
+}
+
+/* 반응형 디자인 - 화면 크기에 따른 카드 개수 조정 */
+@media (max-width: 1200px) {
+    .card-container {
+        max-width: 1000px;
+        margin: 20px auto;
+    }
+    
+    .card {
+        flex: 0 0 calc(33.333% - 30px);
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 900px) {
+    .card-container {
+        max-width: 700px;
+    }
+    
+    .card {
+        flex: 0 0 calc(50% - 20px);
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .card-container {
+        max-width: 400px;
+        gap: 20px;
+    }
+    
+    .card {
+        flex: 0 0 100%;
+        max-width: 300px;
+    }
 }
 
