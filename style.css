@@ -1,0 +1,409 @@
+h1 {
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+h2 {
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: normal;
+    margin: 20px 0;
+}
+
+.card-container {
+    perspective: 1000px;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.card {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+    margin: 30px;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* 체크박스 스타일 */
+.checkbox-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+}
+
+.card-checkbox {
+    display: none;
+}
+
+.checkbox-label {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.checkbox-label:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.card-checkbox:checked + .checkbox-label {
+    background: #5eff71;
+    border-color: #ffffff;
+}
+
+.card-checkbox:checked + .checkbox-label::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 120%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    color: #fff;
+    background-color: #ff7dd6;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#Solo-Entrepreneur-card .card-front {
+    background: linear-gradient(135deg, #ff7dd6, #ff6b9d);
+}
+
+#Solo-Entrepreneur-card .card-back {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    transform: rotateY(180deg);
+}
+
+/* Hacker 카드 */
+#Hacker-card .card-front {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+#Hacker-card .card-back {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    transform: rotateY(180deg);
+}
+
+/* Designer 카드 */
+#Designer-card .card-front {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+}
+
+
+#Designer-card .card-back {
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    transform: rotateY(180deg);
+}
+
+/* Engineer 카드 */
+#Engineer-card .card-front {
+    background: linear-gradient(135deg, #d299c2, #fef9d7);
+}
+
+#Engineer-card .card-back {
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    transform: rotateY(180deg);
+}
+
+/* Storyteller 카드 */
+#Storyteller-card .card-front {
+    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+}
+
+#Storyteller-card .card-back {
+    background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+    transform: rotateY(180deg);
+}
+
+/* Explorer 카드 */
+#Explorer-card .card-front {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+}
+
+#Explorer-card .card-back {
+    background: linear-gradient(135deg, #ff8a80, #ffb74d);
+    transform: rotateY(180deg);
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+}
+
+.card p {
+    margin: 0;
+    font-style: italic;
+}
+
+.card ol {
+    text-align: left;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.card li {
+    margin-bottom: 5px;
+}
+
+/* 버튼 스타일 */
+.button-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.output-button {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.output-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.output-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 결과 화면 스타일 */
+.hidden {
+    display: none;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+.back-button {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.pdf-button {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pdf-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+/* PDF 출력용 스타일 */
+.pdf-content {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-content .selected-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    perspective: none;
+}
+
+.pdf-content .selected-card {
+    height: 180px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.pdf-content .selected-card .card-front,
+.pdf-content .selected-card .card-back {
+    height: 100%;
+    font-size: 0.9em;
+}
+
+.pdf-content .selected-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+}
+
+.pdf-content .selected-card p {
+    font-size: 0.8em;
+}
+
+.pdf-content .selected-card ul {
+    font-size: 0.75em;
+    padding-left: 15px;
+}
+
+.selected-cards-container {
+    perspective: 1000px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.selected-card {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+    justify-self: center;
+}
+
+.selected-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.selected-card .card-front, .selected-card .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 선택된 카드들의 배경색 유지 */
+.selected-card#Solo-Entrepreneur-card .card-front {
+    background: linear-gradient(135deg, #ff7dd6, #ff6b9d);
+}
+
+.selected-card#Solo-Entrepreneur-card .card-back {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    transform: rotateY(180deg);
+}
+
+.selected-card#Hacker-card .card-front {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.selected-card#Hacker-card .card-back {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    transform: rotateY(180deg);
+}
+
+.selected-card#Designer-card .card-front {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+}
+
+.selected-card#Designer-card .card-back {
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    transform: rotateY(180deg);
+}
+
+.selected-card#Engineer-card .card-front {
+    background: linear-gradient(135deg, #d299c2, #fef9d7);
+}
+
+.selected-card#Engineer-card .card-back {
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    transform: rotateY(180deg);
+}
+
+.selected-card#Storyteller-card .card-front {
+    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+}
+
+.selected-card#Storyteller-card .card-back {
+    background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+    transform: rotateY(180deg);
+}
+
+.selected-card#Explorer-card .card-front {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+}
+
+.selected-card#Explorer-card .card-back {
+    background: linear-gradient(135deg, #ff8a80, #ffb74d);
+    transform: rotateY(180deg);
+}
+

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div id="main-screen">
+        <h1>페르소나 카드 선택</h1>
+        <h2>당신에게 맞는 페르소나 카드를 선택하고 출력하세요.</h2>
+        <div class="card-container">
+        <div class="card" id="Solo-Entrepreneur-card">
+            <div class="checkbox-container">
+                <input type="checkbox" id="check-solo" class="card-checkbox">
+                <label for="check-solo" class="checkbox-label"></label>
+            </div>
+            <div class="card-front"> 
+                <h3>Solo Entrepreneur</h3>
+                <p>"내가 만든 건 언젠가 서비스가 된다."</p>
+            </div>
+            <div class="card-back">
+                <h3>Solo Entrepreneur</h3>
+                <ul>
+                    <li>작은 기능도 창업 서비스의 씨앗</li>
+                    <li>혼자서도 기획·개발·디자인까지 책임지는 태도</li>
+                    <li>완벽보다 실행 우선</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card" id="Hacker-card">
+            <div class="checkbox-container">
+                <input type="checkbox" id="check-hacker" class="card-checkbox">
+                <label for="check-hacker" class="checkbox-label"></label>
+            </div>
+            <div class="card-front"> 
+                <h3>Hacker</h3>
+                <p>"작동하는 게 최고다."</p>
+            </div>
+            <div class="card-back">
+                <h3>Hacker</h3>
+                <ul>
+                    <li>문제를 만나면 끝까지 해결한다.</li>
+                    <li>빠르게 프로토타입을 만든다</li>
+                    <li>완벽한 코드보다 돌아가는 카드를 우선한다</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card" id="Designer-card">
+            <div class="checkbox-container">
+                <input type="checkbox" id="check-designer" class="card-checkbox">
+                <label for="check-designer" class="checkbox-label"></label>
+            </div>
+            <div class="card-front"> 
+                <h3>Designer</h3>
+                <p>"사람이 쓰기 편해야 진짜 완성이다."</p>
+            </div>
+            <div class="card-back">
+                <h3>Designer</h3>
+                <ul>
+                    <li>UX/UI를 책임진다</li>
+                    <li>사용자 중심으로 설계한다</li>
+                    <li>팀의 디자인 완성도를 끌어올린다</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card" id="Engineer-card">
+            <div class="checkbox-container">
+                <input type="checkbox" id="check-engineer" class="card-checkbox">
+                <label for="check-engineer" class="checkbox-label"></label>
+            </div>
+            <div class="card-front"> 
+                <h3>Engineer</h3>
+                <p>"안정된 구조가 좋은 서비스의 힘이다."</p>
+            </div>
+            <div class="card-back">
+                <h3>Engineer</h3>
+                <ul>
+                    <li>데이터 흐름과 기능 구현 책임</li>
+                    <li>버그를 잡고, 안정적인 코드 유지</li>
+                    <li>팀의 기술적 신뢰를 만든다</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card" id="Storyteller-card">
+            <div class="checkbox-container">
+                <input type="checkbox" id="check-storyteller" class="card-checkbox">
+                <label for="check-storyteller" class="checkbox-label"></label>
+            </div>
+            <div class="card-front"> 
+                <h3>Storyteller</h3>
+                <p>"이 서비스는 왜 필요한가?"</p>
+            </div>
+            <div class="card-back">
+                <h3>Storyteller</h3>
+                <ul>
+                    <li>프로젝트의 비전과 가치를 설명한다</li>
+                    <li>발표·브랜딩·피칭을 맡는다</li>
+                    <li>아이디어를 외부에 잘 전달한다</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card" id="Explorer-card">
+            <div class="checkbox-container">
+                <input type="checkbox" id="check-explorer" class="card-checkbox">
+                <label for="check-explorer" class="checkbox-label"></label>
+            </div>
+            <div class="card-front"> 
+                <h3>Explorer</h3>
+                <p>"새로운 도구와 길을 두려워하지 않는다."</p>
+            </div>
+            <div class="card-back">
+                <h3>Explorer</h3>
+                <ul>
+                    <li>새로운 기술과 트렌드를 먼저 시도한다</li>
+                     <li>팀에 영감을 주고 호기심을 자극한다</li>
+                    <li>익숙하지 않은 걸 시도하는 용기를 갖는다</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+        <div class="button-container">
+            <button id="output-btn" class="output-button">선택한 카드 출력하기</button>
+        </div>
+    </div>
+
+    <!-- 결과 화면 -->
+    <div id="result-screen" class="hidden">
+        <div class="result-header">
+            <h1>당신의 페르소나</h1>
+            <div class="button-group">
+                <button id="back-btn" class="back-button">다시 선택하기</button>
+                <button id="pdf-btn" class="pdf-button">PDF로 출력하기</button>
+            </div>
+        </div>
+        <div id="pdf-content" class="pdf-content">
+            <div id="selected-cards-container" class="selected-cards-container">
+                <!-- 선택된 카드들이 여기에 표시됩니다 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
