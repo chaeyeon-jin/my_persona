@@ -16,11 +16,13 @@ h2 {
 
 .card-container {
     perspective: 1000px;
-    margin: 20px;
+    margin: 20px auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 40px;
+    --gap: 40px;
+    gap: var(--gap);
+    max-width: 1200px;
 }
 
 .card {
@@ -30,7 +32,9 @@ h2 {
     transform-style: preserve-3d;
     transition: transform 0.6s;
     cursor: pointer;
-    margin: 30px;
+    flex: 0 0 calc((100% - 2*var(--gap)) / 3);
+    max-width: 300px;
+    margin: 20px 0;
 }
 
 .card.flipped {
@@ -72,11 +76,13 @@ h2 {
 }
 
 .card-checkbox:checked + .checkbox-label::after {
+    content: "★";
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: rgb(0, 0, 0);
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: bold;
     font-size: 14px;
 }
@@ -160,10 +166,6 @@ h2 {
     transform: rotateY(180deg);
 }
 
-.card-back {
-    transform: rotateY(180deg);
-}
-
 .card h3 {
     margin: 0 0 10px 0;
     font-size: 1.5em;
@@ -184,7 +186,6 @@ h2 {
     margin-bottom: 5px;
 }
 
-/* 버튼 스타일 */
 .button-container {
     text-align: center;
     margin: 40px 0;
@@ -197,7 +198,7 @@ h2 {
     padding: 15px 30px;
     font-size: 1.2em;
     font-family: 'Noto Sans KR', sans-serif;
-    border-radius: 25px;
+    border-radius: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
@@ -215,7 +216,6 @@ h2 {
     box-shadow: none;
 }
 
-/* 결과 화면 스타일 */
 .hidden {
     display: none;
 }
@@ -235,7 +235,7 @@ h2 {
 }
 
 .back-button {
-    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    background: linear-gradient(135deg, #ff6bab, #eed624);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -252,7 +252,7 @@ h2 {
 }
 
 .pdf-button {
-    background: linear-gradient(135deg, #4CAF50, #45a049);
+    background: linear-gradient(135deg, #51ff57, #5c95ff);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -274,13 +274,12 @@ h2 {
     padding: 20px;
     margin: 20px auto;
     max-width: 1200px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .pdf-content .selected-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     perspective: none;
 }
 
@@ -426,7 +425,7 @@ h2 {
     }
     
     .card {
-        flex: 0 0 calc(50% - 20px);
+        flex: 0 0 calc((100% - var(--gap)) / 2);
         max-width: 300px;
     }
 }
@@ -439,7 +438,7 @@ h2 {
     
     .card {
         flex: 0 0 100%;
-        max-width: 300px;
+        max-width: 100%;
     }
 }
 
